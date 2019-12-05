@@ -7,7 +7,7 @@ RUN apt-get update && \
 	update-alternatives --install /usr/bin/c++ c++ /usr/bin/clang 100 && \
 	rm -rf /var/lib/apt/lists/*
 
-ARG trinitycore_branch=master
+ARG trinitycore_branch=3.3.5
 
 RUN cd ~/ && \
 	git clone -b $trinitycore_branch --depth 1 git://github.com/TrinityCore/TrinityCore.git && \
