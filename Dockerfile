@@ -47,6 +47,6 @@ VOLUME /data
 VOLUME /config
 VOLUME /logs
 
-ADD $trinitycore_branch/entrypoint.sh /
+ADD entrypoint.sh /
 
 ENTRYPOINT ["/entrypoint.sh"]
