@@ -6,9 +6,9 @@ if [ "$1" == "--worldserver" ]; then
 	exit 0
 fi
 
-if [ "$1" == "--bnetserver" ]; then
-	echo "Initiating bnet server"
-	cd /server/bin && ./bnetserver -c /config/bnetserver.conf
+if [ "$1" == "--authserver" ]; then
+	echo "Initiating auth server"
+	cd /server/bin && ./authserver -c /config/authserver.conf
 	exit 0
 fi
 
@@ -25,7 +25,7 @@ if [ "$1" == "--builddata" ]; then
 
 	cd /wowclient && \
 		/server/bin/mapextractor && \
-		cp -r dbc maps gt /data && \
+		cp -r dbc maps /data && \
 		/server/bin/vmap4extractor && \
 		mkdir vmaps && \
 		/server/bin/vmap4assembler Buildings vmaps && \
@@ -33,8 +33,8 @@ if [ "$1" == "--builddata" ]; then
 		mkdir mmaps && \
 		/server/bin/mmaps_generator && \
 		cp -r mmaps /data && \
-		cp -r cameras /data && \
-		rm -rf dbc cameras maps Buildings vmaps mmaps
+		cp -r Cameras /data && \
+		rm -rf dbc Cameras maps Buildings vmaps mmaps
 	exit 0
 fi
 
@@ -70,8 +70,8 @@ if [ "$1" == "--dbinit" ]; then
 	exit 0
 fi
 
-if [ -z "$1" -o "${1:0:2}" = "--" ]; then
-	echo "You must have a parameter of --[worldserver|bnetserver|builddata|dbinit]"
+if [ -z "$1" ]; then
+	echo "You must have a parameter of --[worldserver|auth|builddata|dbinit]"
 	exit 1
 fi
 
