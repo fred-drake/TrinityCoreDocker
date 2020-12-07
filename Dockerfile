@@ -41,12 +41,16 @@ RUN mkdir ~/unrar && \
 	cd / && \
 	rm -rf ~/unrar
 
+RUN sed -i "s/\/var\/lib\/mysql/\/appdata\/db_data/g" /etc/mysql/mariadb.conf.d/50-server.cnf
+
+
 RUN apt-get remove -y git clang cmake make gcc g++ libmariadbclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev \
 		libboost-all-dev mariadb-server p7zip default-libmysqlclient-dev wget nodejs
 
 VOLUME /data
 VOLUME /config
 VOLUME /logs
+VOLUME /appdata
 
 ADD entrypoint.sh /
 
