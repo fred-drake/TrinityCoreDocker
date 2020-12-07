@@ -33,7 +33,7 @@ mysql -u root -p -e "SET GLOBAL sql_mode = 'NO_ENGINE_SUBSTITUTION';"
 
 ### Configuration File Setup
 
-Create a config volume which will store your `worldserver.conf` and `authserver.conf` files.  You can copy the distribution's versions from `/server/etc`.  A few quick commands that will accomplish this:
+Create a config volume which will store your `worldserver.conf` and `bnetserver.conf` files.  You can copy the distribution's versions from `/server/etc`.  A few quick commands that will accomplish this:
 
 ```
 docker run -it --rm -v <CONFIG VOLUME>:/config fdrake/trinitycore cp /server/etc/worldserver.conf.dist /config/worldserver.conf
@@ -76,9 +76,9 @@ services:
       - trinitycore_data:/data
       - trinitycore_config:/config
       - trinitycore_logs:/logs 
-  authserver:
+  bnetserver:
     image: fdrake/trinitycore
-    command: --authserver
+    command: --bnetserver
     tty: true
     ports:
       - '3724:3724'
