@@ -8,7 +8,7 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/*
 
 ARG trinitycore_branch=3.3.5
-ARG latest_commit=3bcda5acf4564b662db4dfde0af7279f99a93b79
+ARG latest_commit=4806b3a8602ad15e48130bb9b49d020d3beb90e4
 
 RUN cd ~/ && \
 	git clone -b $trinitycore_branch --depth 1 git://github.com/TrinityCore/TrinityCore.git && \
